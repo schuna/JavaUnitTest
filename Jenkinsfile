@@ -6,6 +6,7 @@ pipeline {
   stages {
     stage ('Build') {
       steps {
+        sh 'echo "Generating artifacts for ${BUILD_NUMBER}" > output.txt'
         sh 'mvn clean package'
       }
     }
@@ -18,6 +19,13 @@ pipeline {
           junit 'target/surefire-reports/*.xml'
         }
       }
-    }      
+    }
+    stage('Archive'){
+      steps {
+        dir('target'){
+          archiveArtifacts allowEmptyArchive: true, artifacts: '**', fingerprint: true, followSymlinks: false, onlyIfSuccessful: true
+        }
+      }
+    }
   }
 }
