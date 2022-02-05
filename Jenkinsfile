@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent {label '35.216.41.69'}
   tools {
     maven 'Maven-3.8.4'
   }
