@@ -1,0 +1,1 @@
+mvn clean verify sonar:sonar -Dsonar.projectKey=JavaUnitTest -Dsonar.host.url=http://localhost:9000 -Dsonar.login=6b12cb43bed4590b1f5b57ddd18b2c2d0339b5e1
